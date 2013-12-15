@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="src">
+    <CLASSES />
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/../App-ad/libraries/facebook/docs" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../App-ad/libraries/facebook/samples/RPSSample/src" />
+      <root url="file://$PROJECT_DIR$/../App-ad/libraries/facebook/samples/Scrumptious/src" />
+      <root url="file://$PROJECT_DIR$/../App-ad/libraries/facebook/samples/GraphApiSample/src" />
+      <root url="file://$PROJECT_DIR$/../App-ad/libraries/facebook/samples/SwitchUserSample/src" />
+      <root url="file://$PROJECT_DIR$/../App-ad/libraries/facebook/samples/PlacePickerSample/src" />
+      <root url="file://$PROJECT_DIR$/../App-ad/libraries/facebook/samples/FriendPickerSample/src" />
+      <root url="file://$PROJECT_DIR$/../App-ad/libraries/facebook/samples/SessionLoginSample/src" />
+      <root url="file://$PROJECT_DIR$/../App-ad/libraries/facebook/samples/HelloFacebookSample/src" />
+      <root url="file://$PROJECT_DIR$/../App-ad/libraries/facebook/samples/ProfilePictureSample/src" />
+      <root url="file://$PROJECT_DIR$/../App-ad/libraries/facebook/facebook/src" />
+    </SOURCES>
+  </library>
+</component>
