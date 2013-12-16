@@ -16,9 +16,11 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
+import com.google.android.gms.plus.GooglePlusUtil;
 import com.google.android.gms.plus.PlusClient;
 
-public class Login extends Activity implements ConnectionCallbacks, OnConnectionFailedListener{
+
+public class Login extends Activity implements View.OnClickListener, ConnectionCallbacks, OnConnectionFailedListener{
 
     private static final int REQUEST_CODE_RESOLVE_ERR = 9000;
     private static final String TAG = "GPlusLogin";
@@ -43,46 +45,54 @@ public class Login extends Activity implements ConnectionCallbacks, OnConnection
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        int errorCode = GooglePlusUtil.checkGooglePlusApp(this);
+
+        if (errorCode != GooglePlusUtil.SUCCESS) {
+            GooglePlusUtil.getErrorDialog(errorCode, this, 0).show();
+        }
+        else Log.d("google-plus", "sdasdasd");
+
         mPlusClient = new PlusClient.Builder(this, this, this).setVisibleActivities("http://schemas.google.com/AddActivity", "http://schemas.google.com/BuyActivity").build();
         mConnectionProgressDialog = new ProgressDialog(this);
         mConnectionProgressDialog.setMessage("Signing in...");
 
-        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Log.d("google-plus", "onClick");
-
-                if (view.getId() == R.id.sign_in_button && !mPlusClient.isConnected()) {
-                    if (mConnectionResult == null) {
-                        mConnectionProgressDialog.show();
-                        Log.d("google-plus", "cas 1");
-
-                    } else {
-                        try {
-                            Log.d("google-plus", "cas 2");
-
-                            mConnectionResult.startResolutionForResult(Login.this, REQUEST_CODE_RESOLVE_ERR);
-                        } catch (IntentSender.SendIntentException e) {
-                            // Try connecting again.
-                            Log.d("google-plus", "cas 2 catch");
-
-                            mConnectionResult = null;
-                            mPlusClient.connect();
-                        }
-                    }
-                }
-            }
-        });
+        findViewById(R.id.sign_in_button).setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View view) {
+        Log.d("google-plus", "onClick");
 
+        if (view.getId() == R.id.sign_in_button && !mPlusClient.isConnected()) {
+            if (mConnectionResult == null) {
+                mConnectionProgressDialog.show();
+                mPlusClient.connect();
+                Log.d("google-plus", "cas 1");
 
+            } else {
+                try {
+                    Log.d("google-plus", "cas 2");
+                    mConnectionResult.startResolutionForResult(Login.this, REQUEST_CODE_RESOLVE_ERR);
+                } catch (IntentSender.SendIntentException e) {
+                    // Try connecting again.
+                    Log.d("google-plus", "cas 2 catch");
+
+                    mConnectionResult = null;
+                    mPlusClient.connect();
+                }
+            }
+        }
+    };
 
 
 
     @Override
     public void onConnected(Bundle connectionHint) {
+        Log.d("google-plus", "onConnected1");
         mConnectionProgressDialog.dismiss();
         Toast.makeText(this, "User is connected!", Toast.LENGTH_LONG).show();
+        Log.d("google-plus", "onConnected2");
     }
 
     @Override
@@ -113,8 +123,7 @@ public class Login extends Activity implements ConnectionCallbacks, OnConnection
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        Log.d("google-plus", "connection failed");
-
+        Log.d("google-plus", "connection failed " + connectionResult.toString() );
     }
 
     /**
