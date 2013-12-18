@@ -3,6 +3,7 @@ package com.roommates.app;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,12 +12,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
-import com.google.android.gms.plus.GooglePlusUtil;
 import com.google.android.gms.plus.PlusClient;
 
 
@@ -46,6 +47,15 @@ public class Login extends Activity implements View.OnClickListener, ConnectionC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Button buttonAux = (Button) findViewById(R.id.button);
+
+        buttonAux.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), FlatSettings.class);
+                startActivity(intent);
+            }
+        });
+        /*
         int errorCode = GooglePlusUtil.checkGooglePlusApp(this);
 
         if (errorCode != GooglePlusUtil.SUCCESS) {
@@ -57,7 +67,7 @@ public class Login extends Activity implements View.OnClickListener, ConnectionC
         mConnectionProgressDialog = new ProgressDialog(this);
         mConnectionProgressDialog.setMessage("Signing in...");
 
-        findViewById(R.id.sign_in_button).setOnClickListener(this);
+        findViewById(R.id.sign_in_button).setOnClickListener(this);*/
     }
 
     @Override
