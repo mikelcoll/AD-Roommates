@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.roommates.app.FlatSettings"
+            android:label="@string/title_activity_flat_settings" >
+        </activity>
+        <activity
+            android:name="com.roommates.app.AddMember"
+            android:label="@string/title_activity_add_member" >
+        </activity>
     </application>
 
 </manifest>

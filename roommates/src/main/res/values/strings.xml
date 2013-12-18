@@ -4,5 +4,7 @@
     <string name="app_name">Roommates</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_flat_settings">flat_settings</string>
+    <string name="title_activity_add_member">AddMember</string>
 
 </resources>
