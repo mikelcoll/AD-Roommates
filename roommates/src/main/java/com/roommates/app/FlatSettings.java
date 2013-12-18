@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,18 +18,7 @@ public class FlatSettings extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flat_settings);
 
-        Log.d("google-", "hello");
-
-        /*if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }*/
         Button add_member = (Button) findViewById(R.id.add_member);
-
-
-        Log.d("google-", add_member.toString());
-
 
         add_member.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

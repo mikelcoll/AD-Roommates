@@ -6,7 +6,6 @@
     tools:context="com.roommates.app.FlatSettings"
     tools:ignore="MergeRootFrame" >
 
-
     <TextView
         android:text="Name:"
         android:layout_width="wrap_content"
