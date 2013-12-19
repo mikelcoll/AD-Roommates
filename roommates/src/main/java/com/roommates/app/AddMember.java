@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
 /* https://developers.google.com/+/mobile/android/people */
-public class AddMember extends Activity  {
+public class AddMember extends Activity {
 
     private static final String[] COUNTRIES = new String[] {
             "Belgium", "France", "Italy", "Germany", "Spain"
@@ -29,7 +29,12 @@ public class AddMember extends Activity  {
                 findViewById(R.id.add_autocomplete);
         textView.setAdapter(adapter);
 
+
     }
+
+
+
+
 
 
     @Override
@@ -39,6 +44,10 @@ public class AddMember extends Activity  {
         getMenuInflater().inflate(R.menu.add_member, menu);
         return true;
     }
+
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
